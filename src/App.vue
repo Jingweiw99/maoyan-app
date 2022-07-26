@@ -1,32 +1,44 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <router-view></router-view>
+
+    <tabbar></tabbar>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import tabbar from './components/Tabbar.vue'
+import axios from 'axios'
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  data () {
+    return {
     }
+  },
+  components:{
+    tabbar  
+  },
+  methods:{
+   
+  },
+  mounted () {
+    axios.get("/api/mmdb/movie/v3/list/hot.json?ct=%E4%B8%8A%E6%B5%B7&ci=10&channelId=4")
+    .then((res) => {
+      console.log(res)
+    })
   }
+}
+</script>
+
+<style lang="scss">
+li{
+  list-style: none;
+}
+*{
+  margin:0;
+  padding:0;
+}
+html body{
+  height:100%;
 }
 </style>

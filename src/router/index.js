@@ -1,29 +1,82 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Film from '../views/Film.vue'
+import Cinema from '../views/Cinema.vue'
+import Center from '../views/Center.vue'
+import Detail from '../views/Detail.vue'
 
-Vue.use(VueRouter)
+import Nowplaying from '../views/film/Nowplaying'
+import Comingsoon from '../views/film/Comingsoon'
+
+Vue.use(VueRouter) //注册模块，已经创建了全局组件router-view
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path:"/film",
+    component:Film,
+    children:[
+      {
+        path:"nowplaying",//简写不能有/
+        component:Nowplaying
+      },
+      {
+        path:"/film/comingsoon",
+        component:Comingsoon
+      },
+      {
+        path:"",
+        redirect:"/film/nowplaying"
+      }
+    ]
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: "/cinema",
+    component: Cinema,
+  },
+  {
+    path:"/center",
+    component:Center
+  },
+
+  {
+    path:'/detail/:id',
+    component:Detail,
+    name:'myDetail'
+  },
+  {
+    path:'/login',
+    component:() => import ('../views/Login.vue')
+  },
+  //重定向  重定向功能只需要知道提前知道1000个东西额耳机路由就可以了。
+  {
+    path:"/",
+    redirect:"/film",
+  },
+  {
+    path:"*",
+    redirect:"/film"
   }
+
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  mode: 'hash',//hash模式或者是history模式
+  // base: process.env.BASE_URL,
   routes
 })
-
+//to是到那里去，from从哪里来，next是放行。
+router.beforeEach((to,from,next) =>{
+  // console.log(to)
+  const auth = ['/center','order','/money']
+  if(auth.includes(to.fullPath)){
+    // console.log('验证token')
+    if(!localStorage.getItem('token')){
+      next('/login')
+    } else {
+      next()
+    }
+  } else {
+    next()//任何路由来都放行任何路由来都行了其实就是我说
+  }
+})
 export default router

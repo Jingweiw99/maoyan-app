@@ -13,32 +13,34 @@ import axios from 'axios'
 export default {
   data () {
     return {
+      
     }
   },
-  components:{
-    tabbar  
+  components: {
+    tabbar
   },
-  methods:{
-   
+  methods: {
+
   },
-  mounted () {
-    axios.get("/api/mmdb/movie/v3/list/hot.json?ct=%E4%B8%8A%E6%B5%B7&ci=10&channelId=4")
-    .then((res) => {
-      console.log(res)
+  mounted() {
+    axios.get('/ajax/movieOnInfoList?token=&optimus_uuid=43388C403C4911EABDC9998C784A573A4F64A16AA5A34184BADE807E506D749E&optimus_risk_level=71&optimus_code=10').then(res => {
+      console.log(res.data)
     })
   }
 }
 </script>
 
 <style lang="scss">
-li{
+li {
   list-style: none;
 }
-*{
-  margin:0;
-  padding:0;
+
+* {
+  margin: 0;
+  padding: 0;
 }
-html body{
-  height:100%;
+
+html body {
+  height: 100%;
 }
 </style>

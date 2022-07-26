@@ -76,7 +76,7 @@ router.beforeEach((to,from,next) =>{
       next()
     }
   } else {
-    next()//任何路由来都放行任何路由来都行了其实就是我说
+    next()
   }
 })
 export default router

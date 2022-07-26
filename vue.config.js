@@ -2,5 +2,13 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
-  lintOnSave:false
+  lintOnSave:false,
+  devServer:{
+    proxy:{
+      "/ajax":{
+        target:"https://m.maoyan.com",
+        changeOrigin:true
+      }
+    }
+  }
 })

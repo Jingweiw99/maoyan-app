@@ -6,19 +6,18 @@
 
 <script>
 export default {
-    name: 'Comingsoon',
-    data() {
-        return {
+  name: 'Comingsoon',
+  data () {
+    return {
 
-        };
-    },
-    methods: {
+    }
+  },
+  methods: {
 
-    },
-};
+  }
+}
 </script>
 
 <style lang="css" scoped>
 
 </style>
-

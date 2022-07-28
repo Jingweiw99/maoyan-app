@@ -7,16 +7,16 @@
 
 <script>
 export default {
-    name: 'Login',
-    data() {
-        return {
+  name: 'Login',
+  data () {
+    return {
 
-        };
-    },
-    methods: {
+    }
+  },
+  methods: {
 
-    },
-};
+  }
+}
 </script>
 
 <style lang="css" scoped>

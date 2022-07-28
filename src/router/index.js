@@ -8,69 +8,69 @@ import Detail from '../views/Detail.vue'
 import Nowplaying from '../views/film/Nowplaying'
 import Comingsoon from '../views/film/Comingsoon'
 
-Vue.use(VueRouter) //注册模块，已经创建了全局组件router-view
+Vue.use(VueRouter) // 注册模块，已经创建了全局组件router-view
 
 const routes = [
   {
-    path:"/film",
-    component:Film,
-    children:[
+    path: '/film',
+    component: Film,
+    children: [
       {
-        path:"nowplaying",//简写不能有/
-        component:Nowplaying
+        path: 'nowplaying', // 简写不能有/
+        component: Nowplaying
       },
       {
-        path:"/film/comingsoon",
-        component:Comingsoon
+        path: '/film/comingsoon',
+        component: Comingsoon
       },
       {
-        path:"",
-        redirect:"/film/nowplaying"
+        path: '',
+        redirect: '/film/nowplaying'
       }
     ]
   },
   {
-    path: "/cinema",
-    component: Cinema,
+    path: '/cinema',
+    component: Cinema
   },
   {
-    path:"/center",
-    component:Center
+    path: '/center',
+    component: Center
   },
 
   {
-    path:'/detail/:id',
-    component:Detail,
-    name:'myDetail'
+    path: '/detail/:id',
+    component: Detail,
+    name: 'myDetail'
   },
   {
-    path:'/login',
-    component:() => import ('../views/Login.vue')
+    path: '/login',
+    component: () => import('../views/Login.vue')
   },
-  //重定向  重定向功能只需要知道提前知道1000个东西额耳机路由就可以了。
+  // 重定向  重定向功能只需要知道提前知道1000个东西额耳机路由就可以了。
   {
-    path:"/",
-    redirect:"/film",
+    path: '/',
+    redirect: '/film'
   },
   {
-    path:"*",
-    redirect:"/film"
+    path: '*',
+    redirect: '/film'
   }
 
 ]
 
 const router = new VueRouter({
-  mode: 'hash',//hash模式或者是history模式
+  mode: 'hash', // hash模式或者是history模式
   // base: process.env.BASE_URL,
   routes
 })
-//to是到那里去，from从哪里来，next是放行。
-router.beforeEach((to,from,next) =>{
+// to是到那里去，from从哪里来，next是放行。
+router.beforeEach((to, from, next) => {
   // console.log(to)
-  const auth = ['/center','order','/money']
-  if(auth.includes(to.fullPath)){
+  const auth = ['/center', 'order', '/money']
+  if (auth.includes(to.fullPath)) {
     // console.log('验证token')
-    if(!localStorage.getItem('token')){
+    if (!localStorage.getItem('token')) {
       next('/login')
     } else {
       next()

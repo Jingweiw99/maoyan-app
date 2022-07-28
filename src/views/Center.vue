@@ -6,19 +6,19 @@
 
 <script>
 export default {
-    name: 'Center',
-    data() {
-        return {
-
-        };
-    },
-    methods: {
-
-    },
-    mounted(){
+  name: 'Center',
+  data () {
+    return {
 
     }
-};
+  },
+  methods: {
+
+  },
+  mounted () {
+
+  }
+}
 </script>
 
 <style lang="css" scoped>

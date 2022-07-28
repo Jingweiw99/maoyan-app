@@ -25,16 +25,16 @@
 
 <script>
 export default {
-    name: 'Tabbar',
-    data() {
-        return {
+  name: 'Tabbar',
+  data () {
+    return {
 
-        };
-    },
-    methods: {
+    }
+  },
+  methods: {
 
-    },
-};
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -69,13 +69,4 @@ export default {
     }
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
-
-.router-link-active {
-    text-decoration: none;
-    color: red;
-}
 </style>

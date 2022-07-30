@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <section>
+      <router-view></router-view>
+    </section>
 
     <tabbar></tabbar>
   </div>
@@ -11,7 +13,7 @@ import tabbar from './components/Tabbar.vue'
 import axios from 'axios'
 
 export default {
-  data () {
+  data() {
     return {
 
     }
@@ -22,7 +24,7 @@ export default {
   methods: {
 
   },
-  mounted () {
+  mounted() {
     axios.get('/ajax/movieOnInfoList?token=&optimus_uuid=43388C403C4911EABDC9998C784A573A4F64A16AA5A34184BADE807E506D749E&optimus_risk_level=71&optimus_code=10').then(res => {
       // console.log(res.data)
     })
@@ -45,12 +47,15 @@ html body {
 }
 
 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .router-link-active {
-    text-decoration: none;
-    color: red;
+  text-decoration: none;
+  color: red;
+}
+section{
+  margin-bottom: 50px;
 }
 </style>

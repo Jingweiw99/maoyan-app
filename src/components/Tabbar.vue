@@ -47,6 +47,7 @@ export default {
     line-height: 25px;
     text-align: center;
     background-color: white;
+    z-index: 9999;
 
     ul {
         display: flex;

@@ -3,8 +3,7 @@
         <film-swiper>
             <div class="swiper-slide" v-for="(img, index) in imglist" :key="index">
                 <div :style="{backgroundImage:'url('+img+')'}"
-                    style="height:200px;background-size:cover;
-                    background-position:center;"
+                    style="height:200px;background-size:cover;"
                 ></div>
             </div>
         </film-swiper>

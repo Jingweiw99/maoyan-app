@@ -39,7 +39,7 @@ const routes = [
   },
 
   {
-    path: '/detail/:id',
+    path: '/detail/:myid',
     component: Detail,
     name: 'myDetail'
   },
@@ -47,7 +47,7 @@ const routes = [
     path: '/login',
     component: () => import('../views/Login.vue')
   },
-  // 重定向  重定向功能只需要知道提前知道1000个东西额耳机路由就可以了。
+  // 重定向  
   {
     path: '/',
     redirect: '/film'

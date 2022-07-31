@@ -27,6 +27,7 @@ export default {
     }
    },
   mounted () {
+    // 同一个页面有两个swiper会有问题。需要绑定不同的class
     new Swiper('.' + this.swiperclass, {
         slidesPerView: this.perslide,
         spaceBetween: 20,

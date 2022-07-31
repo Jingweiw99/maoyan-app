@@ -8,7 +8,7 @@
                 ></div>
             </div>
         </film-swiper>
-        <film-header style="position:sticky;top:0;background: white;"></film-header>
+        <film-header class="sticky"></film-header>
 
         <!-- /film/nowplaying Nowplaying
         /film/comingsoon Comingsoon -->
@@ -27,7 +27,7 @@ export default {
     }
   },
   methods: {
-
+    
   },
   components: {
     filmHeader,
@@ -36,5 +36,10 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+.sticky{
+  position:sticky;
+  top:0;
+  background: white;
+}       
 </style>

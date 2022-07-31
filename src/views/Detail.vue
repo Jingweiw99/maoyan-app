@@ -1,5 +1,6 @@
 <template>
   <div v-if="filmList">
+    <detail-header><h3>{{filmList.name}}</h3></detail-header>
     <div :style="{ backgroundImage: 'url(' + filmList.poster + ')' }"
       style="height:200px; background-size:cover;  background-position:center;">
     </div>
@@ -18,7 +19,7 @@
       可以设置不同的名字。
       传自定义属性
       -->
-      <detail-swiper :perslide="4" swiperclass="swiper-photos">
+      <detail-swiper :perslide="4" swiperclass="swiper-actors">
         <div class="swiper-slide" v-for="(data, index) in filmList.actors" :key="index">
           <img :src="data.avatarAddress" />
           <div style="text-align:center">
@@ -30,11 +31,10 @@
     </div>
     <div class="filmListContent">
       <h3>剧照</h3>
-      <detail-swiper :perslide="3" swiperclass="swiper-photos">
+      <detail-swiper :perslide="3.5" swiperclass="swiper-photos">
         <div class="swiper-slide" v-for="(data, index) in filmList.photos" :key="index">
           <div :style="{ backgroundImage: 'url(' + data + ')' }"
-            style="height:100px;background-size:cover;background-position:center;" 
-            @click="handlePreview(index)">
+            style="height:100px;background-size:cover;background-position:center;" @click="handlePreview(index)">
           </div>
         </div>
       </detail-swiper>
@@ -47,6 +47,7 @@ import http from '@/util/http'
 import Vue from 'vue'
 import moment from 'moment'
 import detailSwiper from './detail/DetailSwiper.vue'
+import detailHeader from './detail/DetailHeader.vue'
 
 Vue.filter("dateFilter", (date) => {
   //日期处理函数 
@@ -62,12 +63,11 @@ export default {
   },
 
   components: {
-    detailSwiper
+    detailSwiper,
+    detailHeader
   },
   methods: {
-    handlePreview (idx) {
-
-    }
+    
   },
   mounted() {
     // console.log(this.$route)

@@ -4,11 +4,11 @@ module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave:false,
   devServer: {
-    proxy: {
-      '/ajax': {
-        target: 'https://m.maoyan.com',
-        changeOrigin: true
-      }
-    }
+    // proxy: {
+    //   '/ajax': {
+    //     target: 'https://m.maoyan.com',
+    //     changeOrigin: true
+    //   }
+    // }
   }
 })

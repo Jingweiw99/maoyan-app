@@ -101,7 +101,7 @@ export default {
       }
     }).then((res) => {
       this.filmList = res.data.data.film
-      console.log(this.filmList)
+      // console.log(this.filmList)
 
     })
   }

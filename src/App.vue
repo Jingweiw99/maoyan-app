@@ -23,11 +23,6 @@ export default {
   },
   methods: {
 
-  },
-  mounted() {
-    axios.get('/ajax/movieOnInfoList?token=&optimus_uuid=43388C403C4911EABDC9998C784A573A4F64A16AA5A34184BADE807E506D749E&optimus_risk_level=71&optimus_code=10').then(res => {
-      // console.log(res.data)
-    })
   }
 }
 </script>

@@ -38,7 +38,7 @@ export default {
     },
     mounted() {
         http({
-            url: 'https://m.maizuo.com/gateway?cityId=310100&pageNum=1&pageSize=10&type=1&k=136082',
+            url: '/gateway?cityId=310100&pageNum=1&pageSize=10&type=1&k=136082',
             headers: {
                 'X-Host': 'mall.film-ticket.film.list'
             }

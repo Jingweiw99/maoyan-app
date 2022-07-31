@@ -1,6 +1,8 @@
 <template>
   <div v-if="filmList">
-    <detail-header><h3>{{filmList.name}}</h3></detail-header>
+    <detail-header v-scroll="30">
+      <h3>{{ filmList.name }}</h3>
+    </detail-header>
     <div :style="{ backgroundImage: 'url(' + filmList.poster + ')' }"
       style="height:200px; background-size:cover;  background-position:center;">
     </div>
@@ -53,6 +55,26 @@ Vue.filter("dateFilter", (date) => {
   //日期处理函数 
   return moment(date * 1000).format('YYYY-MM-DD h:mm:ss a')
 })
+
+Vue.directive("scroll", {
+  inserted(el,binding) {
+    // console.log(el)  但是监听好了之后会一直存在，所以需要销毁。
+    // console.log(binding.value)   
+    el.style.display = "none"
+    window.onscroll = () => {
+      if (document.documentElement.scrollTop || document.body.scrollTop > binding.value) {
+        el.style.display = " block"
+      } else {
+        el.style.display = "none"
+      }
+    }
+  },
+   // 指令的生命周期unbind（销毁执行）
+   unbind() {
+    window.onscroll =  null
+   }
+
+})
 export default {
   name: 'Detail',
   data() {
@@ -67,7 +89,7 @@ export default {
     detailHeader
   },
   methods: {
-    
+
   },
   mounted() {
     // console.log(this.$route)

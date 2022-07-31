@@ -12,7 +12,7 @@ export default {
     name: 'DetailHeader',
     methods: {
         goBack(){
-            // this.$router.push(`/detail`) 从哪里来到哪里去back。
+            // this.$router.push(`/detail`) 或者从哪里来到哪里去back。
             this.$router.back()
         }
     },

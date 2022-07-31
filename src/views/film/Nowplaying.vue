@@ -44,7 +44,7 @@ export default {
             }
             // method:"get"
         }).then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             this.datalist = res.data.data.films
         })
     }

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="box">
     <ul>
       <li v-for="data in cinemaList" :key="data.cinemaId">
         <div class="left">
@@ -16,6 +16,8 @@
 
 <script>
 import http from '@/util/http'
+import BetterScroll from 'better-scroll'
+
 
 export default {
   name: 'Cinema',
@@ -35,7 +37,15 @@ export default {
     }).then(res => {
 
       this.cinemaList = res.data.data.cinemas
-      console.log(this.cinemaList)
+      // console.log(this.cinemaList)
+      
+      this.$nextTick(() =>{
+        new BetterScroll('.box',{
+          scrollbar:{
+            fade:true
+          }
+        })
+      })
     })
   }
 
@@ -63,5 +73,9 @@ li{
     }
   }
 }
+.box{
+  overflow: hidden;
+  height:48.6875rem;
 
+}
 </style>

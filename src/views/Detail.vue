@@ -50,6 +50,7 @@ import Vue from 'vue'
 import moment from 'moment'
 import detailSwiper from './detail/DetailSwiper.vue'
 import detailHeader from './detail/DetailHeader.vue'
+import { ImagePreview } from 'vant'
 
 Vue.filter("dateFilter", (date) => {
   //日期处理函数 
@@ -89,7 +90,12 @@ export default {
     detailHeader
   },
   methods: {
-
+    handlePreview(index){
+      ImagePreview({
+        images:this.filmList.photos,
+        startPosition:index,
+      })
+    }
   },
   mounted() {
     // console.log(this.$route)

@@ -3,15 +3,18 @@
     <section>
       <router-view></router-view>
     </section>
-
-    <tabbar></tabbar>
+    
+    <tabbar ref="mytabber"></tabbar>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import tabbar from './components/Tabbar.vue'
-import axios from 'axios'
+import Vant from 'vant'
+import 'vant/lib/index.css'
 
+Vue.use(Vant)
 export default {
   data() {
     return {
@@ -21,8 +24,7 @@ export default {
   components: {
     tabbar
   },
-  methods: {
-
+  mounted(){
   }
 }
 </script>

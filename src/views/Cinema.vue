@@ -1,16 +1,33 @@
 <template>
-  <div class="box">
-    <ul>
-      <li v-for="data in cinemaList" :key="data.cinemaId">
-        <div class="left">
-          <div class="cinema-name">{{ data.name }}</div>
-          <div class="cinema-address">{{ data.address }}</div>
-        </div>
-        <div class="right cinema-name">
-          <div style="color:red">￥{{data.lowPrice/100}}起</div>
-        </div>
-      </li>
-    </ul>
+  <div>
+    <van-nav-bar
+     title="影院"
+      @click-left="handleLeft()" 
+      @click-right="handleRight()">
+      <template #left>
+        {{ cityName }}
+        <van-icon name="arrow-down" color="black" />
+      </template>
+      <template #right>
+        <van-icon name="search" size="23" color="black" />
+      </template>
+    </van-nav-bar>
+
+    <div class="box" :style="{
+      height: height
+    }">
+      <ul>
+        <li v-for="data in cinemaList" :key="data.cinemaId">
+          <div class="left">
+            <div class="cinema-name">{{ data.name }}</div>
+            <div class="cinema-address">{{ data.address }}</div>
+          </div>
+          <div class="right cinema-name">
+            <div style="color:red">￥{{ data.lowPrice / 100 }}起</div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -25,10 +42,13 @@ export default {
   },
   data() {
     return {
-      cinemaList: []
+      cinemaList: [],
+      height: "0px"
     }
   },
   mounted() {
+    this.height = document.documentElement.clientHeight - 100 + 'px'
+
     http({
       url: "/gateway?cityId=110100&ticketFlag=1&k=3312386",
       headers: {
@@ -38,11 +58,11 @@ export default {
 
       this.cinemaList = res.data.data.cinemas
       // console.log(this.cinemaList)
-      
-      this.$nextTick(() =>{
-        new BetterScroll('.box',{
-          scrollbar:{
-            fade:true
+
+      this.$nextTick(() => {
+        new BetterScroll('.box', {
+          scrollbar: {
+            fade: true
           }
         })
       })
@@ -53,29 +73,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-li{
-  padding:15px;
-  display:flex;
+li {
+  padding: 15px;
+  display: flex;
   justify-content: space-between;
-  .left{
+
+  .left {
     width: 13.25rem;
-    
-    .cinema-name{
+
+    .cinema-name {
       font-size: 15px;
     }
-    .cinema-address{
+
+    .cinema-address {
       font-size: 12px;
-      margin-top:5px;
+      margin-top: 5px;
       // 下面三行就是超出显示三个点。
-      overflow:hidden;
-      text-overflow:ellipsis;
+      overflow: hidden;
+      text-overflow: ellipsis;
       white-space: nowrap;
     }
   }
 }
-.box{
-  overflow: hidden;
-  height:48.6875rem;
 
+.box {
+  overflow: hidden;
+  height: 48.6875rem;
+  position: relative;
 }
 </style>

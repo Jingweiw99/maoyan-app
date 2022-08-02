@@ -5,7 +5,7 @@
       @click-left="handleLeft()" 
       @click-right="handleRight()">
       <template #left>
-        {{ cityName }}
+        上海
         <van-icon name="arrow-down" color="black" />
       </template>
       <template #right>
@@ -50,7 +50,7 @@ export default {
     this.height = document.documentElement.clientHeight - 100 + 'px'
 
     http({
-      url: "/gateway?cityId=110100&ticketFlag=1&k=3312386",
+      url: "/gateway?cityId=310100&ticketFlag=1&k=3312386",
       headers: {
         "X-Host": "mall.film-ticket.cinema.list"
       }

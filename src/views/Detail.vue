@@ -58,7 +58,7 @@ Vue.filter("dateFilter", (date) => {
 })
 
 Vue.directive("scroll", {
-  inserted(el,binding) {
+  inserted(el, binding) {
     // console.log(el)  但是监听好了之后会一直存在，所以需要销毁。
     // console.log(binding.value)   
     el.style.display = "none"
@@ -70,10 +70,10 @@ Vue.directive("scroll", {
       }
     }
   },
-   // 指令的生命周期unbind（销毁执行）
-   unbind() {
-    window.onscroll =  null
-   }
+  // 指令的生命周期unbind（销毁执行）
+  unbind() {
+    window.onscroll = null
+  }
 
 })
 export default {
@@ -90,13 +90,14 @@ export default {
     detailHeader
   },
   methods: {
-    handlePreview(index){
+    handlePreview(index) {
       ImagePreview({
-        images:this.filmList.photos,
-        startPosition:index,
+        images: this.filmList.photos,
+        startPosition: index,
       })
     }
   },
+  
   mounted() {
     // console.log(this.$route)
 
@@ -108,7 +109,6 @@ export default {
     }).then((res) => {
       this.filmList = res.data.data.film
       // console.log(this.filmList)
-
     })
   }
 }

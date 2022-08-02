@@ -1,9 +1,6 @@
 <template>
   <div>
-    <van-nav-bar
-     title="影院"
-      @click-left="handleLeft()" 
-      @click-right="handleRight()">
+    <van-nav-bar title="影院" @click-left="clickLeft()" @click-right="clickRight()">
       <template #left>
         上海
         <van-icon name="arrow-down" color="black" />
@@ -67,6 +64,12 @@ export default {
         })
       })
     })
+  },
+  methods: {
+    clickLeft() {
+
+      this.$router.push(`/city`)
+    }
   }
 
 }

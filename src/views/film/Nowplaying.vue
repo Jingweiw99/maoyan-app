@@ -18,7 +18,7 @@
 <script>
 import http from '@/util/http'
 import Vue from 'vue'
-
+import { mapState } from 'vuex'
 
 
 
@@ -37,6 +37,9 @@ export default {
             total: 0
         }
     },
+    computed:{
+        ...mapState(['cityId'])
+    },
     methods: {
         handleClick(myid) {
             this.$router.push(`/detail/${myid}`)
@@ -51,7 +54,7 @@ export default {
             // console.log('到底了')
             this.currentPage++
             http({
-                url: `/gateway?cityId=310100&pageNum=${this.currentPage}&pageSize=10&type=1&k=136082`,
+                url: `/gateway?cityId=${this.cityId}&pageNum=${this.currentPage}&pageSize=10&type=1&k=136082`,
                 headers: {
                     'X-Host': 'mall.film-ticket.film.list'
                 }
@@ -65,7 +68,7 @@ export default {
     },
     mounted() {
         http({
-            url: `/gateway?cityId=310100&pageNum=1&pageSize=10&type=1&k=136082`,
+            url: `/gateway?cityId=${this.cityId}&pageNum=1&pageSize=10&type=1&k=136082`,
             headers: {
                 'X-Host': 'mall.film-ticket.film.list'
             }

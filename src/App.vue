@@ -4,7 +4,7 @@
       <router-view></router-view>
     </section>
     
-    <tabbar ref="mytabber"></tabbar>
+    <tabbar ref="mytabber" v-if="isTabbarShow"></tabbar>
   </div>
 </template>
 
@@ -13,6 +13,7 @@ import Vue from 'vue'
 import tabbar from './components/Tabbar.vue'
 import Vant from 'vant'
 import 'vant/lib/index.css'
+import { mapState } from 'vuex'
 
 Vue.use(Vant)
 export default {
@@ -20,6 +21,9 @@ export default {
     return {
 
     }
+  },
+  computed:{
+    ...mapState(['isTabbarShow'])
   },
   components: {
     tabbar

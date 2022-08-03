@@ -94,7 +94,7 @@ export default {
     clickLeft() {
       this.$router.push(`/city`)
       // 清空cinemaList,避免邏輯判斷沒反應。
-      this.clearCinemaList
+      this.clearCinemaList()
     },
     clickRight() {
       this.$router.push('/cinema/search')

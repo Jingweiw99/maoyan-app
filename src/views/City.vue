@@ -3,17 +3,18 @@
         <van-index-bar :index-list="computedList" @select="handleChange">
             <div v-for="city in cityList" :key="city.type">
                 <van-index-anchor :index="city.type" />
-                <van-cell :title="item.name" v-for="item in city.list" :key="item.cityId" 
-                @click="handleChangePage(item)" />
+                <van-cell :title="item.name" v-for="item in city.list" :key="item.cityId"
+                    @click="handleChangePage(item)" />
             </div>
         </van-index-bar>
-        
+
     </div>
 </template>
 
 <script>
 import http from '@/util/http';
 import { Toast } from 'vant'
+import mixinTabbar from '@/util/mixinTabbar'
 
 export default {
     name: 'City',
@@ -22,12 +23,14 @@ export default {
             cityList: []
         };
     },
+    mixins: [mixinTabbar],
     computed: {
         computedList() {
             return this.cityList.map(item => item.type)
         }
     },
     mounted() {
+        // this.$store.commit('tabbarHide')
         http({
             url: "/gateway?k=2554485",
             headers: {
@@ -38,6 +41,9 @@ export default {
             // 将数据进行分组，结合组件库渲染页面。
             this.cityList = this.renderCity(res.data.data.cities)
         })
+    },
+    destroyed() {
+        // this.$store.commit('tabbarShow')
     },
     methods: {
         renderCity(list) {
@@ -65,8 +71,8 @@ export default {
         },
         handleChangePage(item) {
             // console.log(item.name, item.cityId)
-            this.$store.commit('changeCityName',item.name)
-            this.$store.commit('changeCityId',item.cityId)
+            this.$store.commit('changeCityName', item.name)
+            this.$store.commit('changeCityId', item.cityId)
             this.$router.back()
         }
 

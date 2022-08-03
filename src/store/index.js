@@ -1,15 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import http from '@/util/http'
-
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  plugins: [createPersistedState()],
+
   state: {
     cityId: '310100',
     cityName: '上海',
-    cinemaList:[]
+    cinemaList: [],
+    isTabbarShow: true
   },
   getters: {
   },
@@ -20,15 +23,21 @@ export default new Vuex.Store({
     changeCityId(state, cityId) {
       state.cityId = cityId
     },
-    changeCinemaList(state,cinemaList){
+    changeCinemaList(state, cinemaList) {
       state.cinemaList = cinemaList
     },
-    clearCinemaList(state){
+    clearCinemaList(state) {
       state.cinemaList = []
+    },
+    tabbarShow(state) {
+      state.isTabbarShow = true
+    },
+    tabbarHide(state) {
+      state.isTabbarShow = false
     }
   },
   actions: {
-    getCinemaList(store,cityId) {
+    getCinemaList(store, cityId) {
       // console.log("getCinemaData")
       return http({
         url: `/gateway?cityId=${cityId}&ticketFlag=1&k=3312386`,
@@ -38,7 +47,7 @@ export default new Vuex.Store({
       }).then(res => {
 
         store.commit('changeCinemaList', res.data.data.cinemas)
-        
+
         // this.$nextTick(() => {
         //   new BetterScroll('.box', {
         //     scrollbar: {

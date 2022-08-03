@@ -51,6 +51,7 @@ import moment from 'moment'
 import detailSwiper from './detail/DetailSwiper.vue'
 import detailHeader from './detail/DetailHeader.vue'
 import { ImagePreview } from 'vant'
+import mixinTabbar from '@/util/mixinTabbar'
 
 Vue.filter("dateFilter", (date) => {
   //日期处理函数 
@@ -84,7 +85,7 @@ export default {
       isShow: false
     }
   },
-
+  mixins:[mixinTabbar],
   components: {
     detailSwiper,
     detailHeader

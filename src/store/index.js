@@ -1,16 +1,53 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import http from '@/util/http'
+
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    cityId: '310100',
+    cityName: '上海',
+    cinemaList:[]
   },
   getters: {
   },
   mutations: {
+    changeCityName(state, cityName) {
+      state.cityName = cityName
+    },
+    changeCityId(state, cityId) {
+      state.cityId = cityId
+    },
+    changeCinemaList(state,cinemaList){
+      state.cinemaList = cinemaList
+    },
+    clearCinemaList(state){
+      state.cinemaList = []
+    }
   },
   actions: {
+    getCinemaList(store,cityId) {
+      // console.log("getCinemaData")
+      return http({
+        url: `/gateway?cityId=${cityId}&ticketFlag=1&k=3312386`,
+        headers: {
+          "X-Host": "mall.film-ticket.cinema.list"
+        }
+      }).then(res => {
+
+        store.commit('changeCinemaList', res.data.data.cinemas)
+        
+        // this.$nextTick(() => {
+        //   new BetterScroll('.box', {
+        //     scrollbar: {
+        //       fade: true
+        //     }
+        //   })
+        // })
+      })
+    }
   },
   modules: {
   }

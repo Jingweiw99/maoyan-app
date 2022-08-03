@@ -5,6 +5,8 @@ import Cinema from '../views/Cinema.vue'
 import Center from '../views/Center.vue'
 import Detail from '../views/Detail.vue'
 import City from '../views/City.vue'
+import Search from '../views/Search.vue'
+
 
 import Nowplaying from '../views/film/Nowplaying'
 import Comingsoon from '../views/film/Comingsoon'
@@ -32,7 +34,11 @@ const routes = [
   },
   {
     path: '/cinema',
-    component: Cinema
+    component: Cinema,
+  },
+  {
+    path:'/cinema/search',
+    component:Search
   },
   {
     path: '/city',

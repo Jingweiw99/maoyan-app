@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkmyapp"]=self["webpackChunkmyapp"]||[]).push([[682],{2682:function(n,t,u){u.r(t),u.d(t,{default:function(){return f}});var e=function(){var n=this;n._self._c;return n._m(0)},r=[function(){var n=this,t=n._self._c;return t("div",[n._v(" Login "),t("button",[n._v("登录")])])}],a={name:"Login",data(){return{}},methods:{}},s=a,c=u(1001),i=(0,c.Z)(s,e,r,!1,null,"796dac67",null),f=i.exports}}]);
+//# sourceMappingURL=682.cbc6b39b.js.map

@@ -2,7 +2,7 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
-  // lintOnSave:false,
+  lintOnSave: false,
   devServer: {
     // proxy: {
     //   '/ajax': {
@@ -10,5 +10,10 @@ module.exports = defineConfig({
     //     changeOrigin: true
     //   }
     // }
-  }
+  },
+
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/maoyan-app/'
+    : '/'
+
 })

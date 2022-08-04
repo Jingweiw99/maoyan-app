@@ -21,41 +21,39 @@
 import { mapActions, mapState } from 'vuex'
 
 export default {
-    name: 'Search',
-    data() {
-        return {
-            value: ''
-        };
-    },
-    
-    methods: {
-        onSearch(val) {
-
-        },
-        onCancel() {
-            this.$router.back()
-        },
-        ...mapActions(['getCinemaList'])
-    },
-    mounted() {
-        if (this.cinemaList.length === 0) {
-            this.getCinemaList(this.cityId)
-        } else {
-            console.log("缓存")
-
-        }
-    },
-    computed: {
-        ...mapState(['cinemaList','cityId']),
-        computedList() {
-            return this.cinemaList.filter(item =>
-                item.name.toUpperCase().includes(this.value.toUpperCase()) ||
-                item.address.toUpperCase().includes(this.value.toUpperCase())
-            )
-
-        }
+  name: 'Search',
+  data () {
+    return {
+      value: ''
     }
-};
+  },
+
+  methods: {
+    onSearch (val) {
+
+    },
+    onCancel () {
+      this.$router.back()
+    },
+    ...mapActions(['getCinemaList'])
+  },
+  mounted () {
+    if (this.cinemaList.length === 0) {
+      this.getCinemaList(this.cityId)
+    } else {
+      console.log('缓存')
+    }
+  },
+  computed: {
+    ...mapState(['cinemaList', 'cityId']),
+    computedList () {
+      return this.cinemaList.filter(item =>
+        item.name.toUpperCase().includes(this.value.toUpperCase()) ||
+                item.address.toUpperCase().includes(this.value.toUpperCase())
+      )
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

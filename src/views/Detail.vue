@@ -53,53 +53,53 @@ import detailHeader from './detail/DetailHeader.vue'
 import { ImagePreview } from 'vant'
 import mixinTabbar from '@/util/mixinTabbar'
 
-Vue.filter("dateFilter", (date) => {
-  //日期处理函数 
+Vue.filter('dateFilter', (date) => {
+  // 日期处理函数
   return moment(date * 1000).format('YYYY-MM-DD h:mm:ss a')
 })
 
-Vue.directive("scroll", {
-  inserted(el, binding) {
+Vue.directive('scroll', {
+  inserted (el, binding) {
     // console.log(el)  但是监听好了之后会一直存在，所以需要销毁。
-    // console.log(binding.value)   
-    el.style.display = "none"
+    // console.log(binding.value)
+    el.style.display = 'none'
     window.onscroll = () => {
       if (document.documentElement.scrollTop || document.body.scrollTop > binding.value) {
-        el.style.display = " block"
+        el.style.display = ' block'
       } else {
-        el.style.display = "none"
+        el.style.display = 'none'
       }
     }
   },
   // 指令的生命周期unbind（销毁执行）
-  unbind() {
+  unbind () {
     window.onscroll = null
   }
 
 })
 export default {
   name: 'Detail',
-  data() {
+  data () {
     return {
       filmList: null,
       isShow: false
     }
   },
-  mixins:[mixinTabbar],
+  mixins: [mixinTabbar],
   components: {
     detailSwiper,
     detailHeader
   },
   methods: {
-    handlePreview(index) {
+    handlePreview (index) {
       ImagePreview({
         images: this.filmList.photos,
-        startPosition: index,
+        startPosition: index
       })
     }
   },
-  
-  mounted() {
+
+  mounted () {
     // console.log(this.$route)
 
     http({

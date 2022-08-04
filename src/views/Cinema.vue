@@ -36,19 +36,19 @@ export default {
   name: 'Cinema',
   components: {
   },
-  data() {
+  data () {
     return {
-      height: "0px"
+      height: '0px'
     }
   },
   computed: {
     ...mapState(['cinemaList', 'cityId', 'cityName'])
 
   },
-  mounted() {
+  mounted () {
     this.height = document.documentElement.clientHeight - 100 + 'px'
     // 不重复请求，离开页面在回来不请求，提升用户体验。vuex提供了快照。
-    if (this.cinemaList.length === 0) { 
+    if (this.cinemaList.length === 0) {
       this.getCinemaList(this.cityId).then(() => {
         this.$nextTick(() => {
           new BetterScroll('.box', {
@@ -59,7 +59,7 @@ export default {
         })
       })
     } else {
-      // console.log("缓存") 
+      // console.log("缓存")
       this.$nextTick(() => {
         new BetterScroll('.box', {
           scrollbar: {
@@ -85,18 +85,18 @@ export default {
     //         fade: true
     //       }
     //     })
-    //   }) 
+    //   })
     // })
   },
   methods: {
     ...mapActions(['getCinemaList']),
     ...mapMutations(['clearCinemaList']),
-    clickLeft() {
-      this.$router.push(`/city`)
+    clickLeft () {
+      this.$router.push('/city')
       // 清空cinemaList,避免邏輯判斷沒反應。
       this.clearCinemaList()
     },
-    clickRight() {
+    clickRight () {
       this.$router.push('/cinema/search')
     }
   }

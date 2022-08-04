@@ -16,22 +16,22 @@ export default {
     return {
     }
   },
-   props:{
-    perslide:{
+  props: {
+    perslide: {
       default: 1,
       type: Number
     },
-    swiperclass:{
-        type: String,
-        default:'swiper-container'
+    swiperclass: {
+      type: String,
+      default: 'swiper-container'
     }
-   },
+  },
   mounted () {
     // 同一个页面有两个swiper会有问题。需要绑定不同的class
     new Swiper('.' + this.swiperclass, {
-        slidesPerView: this.perslide,
-        spaceBetween: 20,
-        freeMode: true
+      slidesPerView: this.perslide,
+      spaceBetween: 20,
+      freeMode: true
     })
   }
 }

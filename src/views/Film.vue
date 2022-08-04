@@ -27,7 +27,7 @@ export default {
     }
   },
   methods: {
-    
+
   },
   components: {
     filmHeader,
@@ -42,5 +42,5 @@ export default {
   top:0;
   background: white;
   z-index:9999;
-}       
+}
 </style>

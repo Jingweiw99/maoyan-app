@@ -17,35 +17,34 @@ export default new Vuex.Store({
   getters: {
   },
   mutations: {
-    changeCityName(state, cityName) {
+    changeCityName (state, cityName) {
       state.cityName = cityName
     },
-    changeCityId(state, cityId) {
+    changeCityId (state, cityId) {
       state.cityId = cityId
     },
-    changeCinemaList(state, cinemaList) {
+    changeCinemaList (state, cinemaList) {
       state.cinemaList = cinemaList
     },
-    clearCinemaList(state) {
+    clearCinemaList (state) {
       state.cinemaList = []
     },
-    tabbarShow(state) {
+    tabbarShow (state) {
       state.isTabbarShow = true
     },
-    tabbarHide(state) {
+    tabbarHide (state) {
       state.isTabbarShow = false
     }
   },
   actions: {
-    getCinemaList(store, cityId) {
+    getCinemaList (store, cityId) {
       // console.log("getCinemaData")
       return http({
         url: `/gateway?cityId=${cityId}&ticketFlag=1&k=3312386`,
         headers: {
-          "X-Host": "mall.film-ticket.cinema.list"
+          'X-Host': 'mall.film-ticket.cinema.list'
         }
       }).then(res => {
-
         store.commit('changeCinemaList', res.data.data.cinemas)
 
         // this.$nextTick(() => {

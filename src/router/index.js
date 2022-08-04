@@ -7,7 +7,6 @@ import Detail from '../views/Detail.vue'
 import City from '../views/City.vue'
 import Search from '../views/Search.vue'
 
-
 import Nowplaying from '../views/film/Nowplaying'
 import Comingsoon from '../views/film/Comingsoon'
 
@@ -34,11 +33,11 @@ const routes = [
   },
   {
     path: '/cinema',
-    component: Cinema,
+    component: Cinema
   },
   {
-    path:'/cinema/search',
-    component:Search
+    path: '/cinema/search',
+    component: Search
   },
   {
     path: '/city',
@@ -58,7 +57,7 @@ const routes = [
     path: '/login',
     component: () => import('../views/Login.vue')
   },
-  // 重定向  
+  // 重定向
   {
     path: '/',
     redirect: '/film'

@@ -9,14 +9,14 @@
 
 <script>
 export default {
-    name: 'DetailHeader',
-    methods: {
-        goBack(){
-            // this.$router.push(`/detail`) 或者从哪里来到哪里去back。
-            this.$router.back()
-        }
-    },
-};
+  name: 'DetailHeader',
+  methods: {
+    goBack () {
+      // this.$router.push(`/detail`) 或者从哪里来到哪里去back。
+      this.$router.back()
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -34,10 +34,8 @@ export default {
         position: fixed;
         left:.625rem;
         top:0px;
-        
-        
+
     }
 }
-
 
 </style>
